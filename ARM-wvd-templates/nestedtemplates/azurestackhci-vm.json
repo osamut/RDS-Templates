@@ -265,7 +265,7 @@
           "name": "[concat(parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber')),'/CustomScriptExtension')]",
           "type": "Microsoft.AzureStackHCI/virtualmachines/extensions",
           "location": "[parameters('location')]",
-          "apiVersion": "2021-09-01-preview",
+          "apiVersion": "2022-10-01",
           "dependsOn": [ "rdsh-vm-loop" ],
             "copy": {
               "name": "rdsh-cse-loop",
