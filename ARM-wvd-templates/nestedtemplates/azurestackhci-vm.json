@@ -235,9 +235,6 @@
                     "adminUsername": "[variables('vmAdministratorUsername')]",
                     "adminPassword": "[variables('vmAdministratorPassword')]",
                     "osType": "Windows",
-                    "windowsConfiguration": {
-                        "provisionVMAgent": false
-                    },
                     "computerName": "[concat(parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber')))]"
                 },
                 "storageProfile": {
