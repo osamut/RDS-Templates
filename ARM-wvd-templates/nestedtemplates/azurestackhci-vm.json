@@ -186,7 +186,7 @@
     },
     "resources": [
         {
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2021-09-01-preview",
             "name": "[concat(parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber')), '-nic')]",
             "type": "Microsoft.AzureStackHCI/networkinterfaces",
             "location": "[parameters('location')]",
@@ -215,7 +215,7 @@
             }
         },
         {
-            "apiVersion": "2022-09-01,
+            "apiVersion": "2021-09-01-preview",
             "name": "[concat(parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber')))]",
             "location": "[parameters('location')]",
             "type": "Microsoft.AzureStackHCI/virtualmachines",
@@ -268,7 +268,7 @@
           "name": "[concat(parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber')),'/CustomScriptExtension')]",
           "type": "Microsoft.AzureStackHCI/virtualmachines/extensions",
           "location": "[parameters('location')]",
-          "apiVersion": "2022-09-01",
+          "apiVersion": "2021-09-01-preview",
           "dependsOn": [ "rdsh-vm-loop" ],
             "copy": {
               "name": "rdsh-cse-loop",
@@ -287,7 +287,7 @@
           }
         },
         {
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2021-09-01-preview",
             "type": "Microsoft.AzureStackHCI/virtualMachines/extensions",
             "name": "[concat(parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber')), '/', 'joindomain')]",
             "location": "[parameters('location')]",
@@ -315,7 +315,7 @@
         },
         {
           "type": "Microsoft.AzureStackHCI/virtualMachines/extensions",
-          "apiVersion": "2022-09-01",
+          "apiVersion": "2021-09-01-preview",
           "name": "[format('{0}/azmonitor', concat(parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber'))))]",
           "location": "[parameters('location')]",
           "copy": {
