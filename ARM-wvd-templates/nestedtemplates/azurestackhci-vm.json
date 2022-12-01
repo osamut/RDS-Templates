@@ -235,6 +235,9 @@
                     "adminUsername": "[variables('vmAdministratorUsername')]",
                     "adminPassword": "[variables('vmAdministratorPassword')]",
                     "osType": "Windows",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true
+                    },
                     "computerName": "[concat(parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber')))]"
                 },
                 "storageProfile": {
@@ -310,5 +313,22 @@
               }
             }
         },
+        {
+          "type": "Microsoft.AzureStackHCI/virtualMachines/extensions",
+          "apiVersion": "2021-09-01-preview",
+          "name": "[format('{0}/azmonitor', concat(parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber'))))]",
+          "location": "[parameters('location')]",
+          "copy": {
+            "name": "rdsh-monitor-agent-loop",
+            "count": "[parameters('rdshNumberOfInstances')]"
+          },
+          "dependsOn": ["rdsh-domain-join-loop"],
+          "properties": {
+            "publisher": "Microsoft.Azure.Monitor",
+            "type": "AzureMonitorWindowsAgent",
+            "typeHandlerVersion": "1.5",
+            "autoUpgradeMinorVersion": true
+          }
+        }
     ]
   }
